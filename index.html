@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>MINI BANK APP</title>
+  </head>
+  <body>
+    <div id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+      <div class="overlay-content">
+        <a href="#">Register</a>
+        <a href="#">Login </a>
+        <a href="#">Transaction history</a>
+        <a href="#">Deposit</a>
+        <a href="#">Withdraw</a>
+        <a href="#">Transfer</a>
+        <a href="#">Account profile</a>
+      </div>
+    </div>
+
+    <nav>
+      <img src="" class="logo" alt="MY MINI BANK APP" />
+      <ul>
+        <li>
+          <a href="#">Register</a>
+          <a href="#">Login</a>
+          <a href="#">Transaction history</a>
+          <a href="#">Deposit</a>
+          <a href="#">Withdraw</a>
+          <a href="#">Transfer</a>
+          <a href="#">Account profile</a>
+        </li>
+      </ul>
+
+      <a
+        style="font-size: 30px; cursor: pointer"
+        class="menu"
+        onclick="openNav()"
+        >&#9776;</a
+      >
+    </nav>
+    <form onsubmit="return false;" action="#">
+      <div class="container">
+        <h1>Register</h1>
+
+        <hr />
+
+        <label for="Name"><b>Name</b></label>
+        <input
+          type="text"
+          placeholder="Enter name"
+          name="name"
+          required
+          id="user"
+        />
+        <label for="Account number"><b>Account number</b></label>
+        <input
+          type="text"
+          placeholder="Generate account no."
+          name="Account number"
+          maxlength="10"
+          id="getAccountNumber"
+          required
+        />
+
+        <label for="pin"><b>Pin</b></label>
+        <input
+          type="pin"
+          placeholder="Enter Pin"
+          name="pin"
+          required
+          id="pin"
+          maxlength="4"
+        />
+
+        <label for="pin-repeat"><b>Repeat Pin</b></label>
+        <input
+          type="pin"
+          placeholder="Repeat Pin"
+          name="pin-repeat"
+          required
+          id="pin-repeat"
+          maxlength="4"
+          onclick=""
+        />
+        <hr />
+
+        <button type="submit" class="registerbtn" class="btn">Register</button>
+      </div>
+
+      <div class="container signin">
+        <p>Already have an account? <a href="#">Sign in</a>.</p>
+      </div>
+    </form>
+    <script src="./index.js"></script>
+  </body>
+</html>
