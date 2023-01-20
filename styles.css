@@ -139,23 +139,6 @@ nav .login-icon {
   background-color: white;
 }
 
-input[type="text"],
-input[type="pin"] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  border-radius: 50px;
-  background: #f1f1f1;
-}
-
-input[type="text"]:focus,
-input[type="pin"]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
