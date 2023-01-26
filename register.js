@@ -1,37 +1,39 @@
-function openNav() {
-  document.getElementById("myNav").style.width = "100%";
-}
+// function openNav() {
+//   document.getElementById("myNav").style.width = "100%";
+// }
 
-function closeNav() {
-  document.getElementById("myNav").style.width = "0%";
-}
-
+// function closeNav() {
+//   document.getElementById("myNav").style.width = "0%";
+// }
+const pinElem = document.getElementById("pin");
 const accountNameElem = document.getElementById("account-name");
 const accountNumberElem = document.getElementById("account-number");
-const pinElem = document.getElementById("pin");
 const pinRepeatElem = document.getElementById("pin-repeat");
 const registerButton = document.querySelector(".registerbtn");
-
-accountNumberElem.addEventListener("click", generateAccountNumber);
 
 function generateAccountNumber() {
   const acctNum = Math.random().toString().slice(2, 12);
   accountNumberElem.value = acctNum;
 }
+accountNumberElem.addEventListener("click", generateAccountNumber);
 
 function saveUserInfoInLocalStorage() {
-  const currentUsersArr = JSON.parse(localStorage.getItem("MB_USER_ACCOUNTS")) || [];
+  const currentUsersArr =
+    JSON.parse(localStorage.getItem("MB_USER_ACCOUNTS")) || [];
   const userObject = {
     accountName: accountNameElem.value,
     accountNumber: accountNumberElem.value,
     accountPin: pinElem.value,
-    transactions: []
+    transactions: [],
   };
 
   // TODO: check that a user with this account number does not already exist
-  const existingUser = currentUsersArr.find(user => user.accountNumber === accountNumberElem.value)
-  console.log('existingUser', existingUser);
-  console.log('currentUsersArr', currentUsersArr);
+
+  const existingUser = currentUsersArr.find(
+    (user) => user.accountNumber === accountNumberElem.value
+  );
+  console.log("existingUser", existingUser);
+  console.log("currentUsersArr", currentUsersArr);
 
   if (existingUser) {
     return;
