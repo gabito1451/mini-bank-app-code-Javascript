@@ -7,32 +7,26 @@ for (let i = 0; i < registeredUsers.length; i++) {
   let optionElem = document.createElement("option");
   let text = document.createTextNode(registeredUsers[i].accountName);
   optionElem.appendChild(text);
-  optionElem.setAttribute("value", registeredUsers[i].accountName);
+  optionElem.setAttribute("value", registeredUsers[i].accountNumber);
   selectElem.insertBefore(optionElem, selectElem.lastChild);
 }
 
-// function for storing account number of the user in the local storage against key MB_LOGGEDIN_USER_ACCOUNTNUMBER
-function storeAcctNo() {
-  registeredUsers.forEach((user) => {
-    if (
-      selectElem.value === user.accountName &&
-      passwordElem.value === user.accountPin
-    ) {
-      localStorage.setItem(
-        "MB_LOGGEDIN_USER_ACCOUNTS",
-        JSON.stringify(user.accountNumber)
-      );
-    }
-    if (
-      registeredUsers.includes(
-        JSON.parse(localStorage.getItem("MB_LOGGEDIN_USER_ACCOUNTS"))
-      )
-    ) {
-      alert("please register with a different account number");
-    } else {
-      prompt("go to the transaction page");
-    }
-  });
+// function for logging in
+function login() {
+  localStorage.setItem(
+    "MB_LOGGEDIN_USER_ACCOUNT_NUMBER",
+    JSON.stringify(selectElem.value)
+  );
+  if (localStorage.getItem("MB_LOGGEDIN_USER_ACCOUNT_NUMBER") !== null) {
+    location.href = "transaction.html";
+  }
+  //to check user object with the stored account number
+  let accountUserDetails = registeredUsers.find(
+    (acctNo) =>
+      acctNo.accountNumber ===
+      JSON.parse(localStorage.getItem("MB_LOGGEDIN_USER_ACCOUNT_NUMBER"))
+  );
+  console.log(accountUserDetails);
 }
 
-loginElem.addEventListener("click", storeAcctNo);
+loginElem.addEventListener("click", login);
