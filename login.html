@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="login-session">
+      <h2>Login</h2>
+      <h3>Enter your credentials</h3>
+      <a href="./index.html" id="register-html">Register here</a>
+      <form onsubmit="return false;" class="login-form">
+        <select id="select" required>
+          <option value="selectusername">select username</option>
+          <option value="izu" id="display-users">izu</option>
+        </select>
+        <input
+          type="password"
+          placeholder="Pin"
+          id="selected-user-password"
+          maxlength="4"
+          required
+        />
+        <a href="#">Forgot your password?</a>
+        <button class="login-btn">LOGIN</button>
+      </form>
+    </div>
+
+    <script src="./login.js" type="module"></script>
+  </body>
+</html>
