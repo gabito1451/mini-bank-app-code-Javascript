@@ -1,3 +1,10 @@
+// function openNav() {
+//   document.getElementById("myNav").style.width = "100%";
+// }
+
+// function closeNav() {
+//   document.getElementById("myNav").style.width = "0%";
+// }
 const pinElem = document.getElementById("pin");
 const accountNameElem = document.getElementById("account-name");
 const accountNumberElem = document.getElementById("account-number");
