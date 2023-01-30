@@ -1,6 +1,6 @@
-const passwordElem = document.getElementById("selected-user-password");
-const loginElem = document.querySelector(".login-btn");
-const selectElem = document.getElementById("select");
+const accountPinElem = document.getElementById("account-pin");
+const loginElem = document.getElementById("login-btn");
+const accountNameElem = document.getElementById("account-name");
 // if (localStorage.getItem("MB_LOGGEDIN_USER_ACCOUNT_NUMBER") !== null) {
 //   location.href = "transactions.html";
 // }
@@ -10,13 +10,16 @@ registeredUsers.forEach((user) => {
   const optionElem = document.createElement("option");
   optionElem.value = user.accountNumber;
   optionElem.textContent = `${user.accountName}(${user.accountPin})`;
-  passwordElem.textContent = `${user.accountPin}`;
-  selectElem.append(optionElem);
+  accountPinElem.textContent = `${user.accountPin}`;
+  accountNameElem.append(optionElem);
 });
 
 // function for logging in
 function login() {
-  localStorage.setItem("MB_LOGGEDIN_USER_ACCOUNT_NUMBER", selectElem.value);
+  localStorage.setItem(
+    "MB_LOGGEDIN_USER_ACCOUNT_NUMBER",
+    accountNameElem.value
+  );
 
   //to check user object with the stored account number
   const accountUserDetails = registeredUsers.find(
@@ -25,7 +28,7 @@ function login() {
       localStorage.getItem("MB_LOGGEDIN_USER_ACCOUNT_NUMBER")
   );
   console.log(accountUserDetails);
-  if (accountUserDetails.accountPin !== passwordElem.value) {
+  if (accountUserDetails.accountPin !== accountPinElem.value) {
     alert("incorrect pin");
     return;
   }

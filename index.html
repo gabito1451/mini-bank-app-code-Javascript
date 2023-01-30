@@ -11,21 +11,24 @@
     <div class="login-session">
       <h1>Login</h1>
       <form onsubmit="return false;" class="login-form">
-        <select id="select" required>
-          <option value="accountNumber" text="accountName">
-            select username
-          </option>
-        </select>
-        <input
-          type="password"
-          placeholder="Pin"
-          id="selected-user-password"
-          maxlength="4"
-          required
-        />
+        <div class="form-group">
+          <select id="account-name" class="form-control" required>
+            <option value=" " text="Account Name">select username</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Pin"
+            id="account-pin"
+            maxlength="4"
+            required
+          />
+        </div>
         <a href="#">Forgot your password?</a>
-        <a href="./register.html" class="register-link">Register here</a>
-        <button class="login-btn">LOGIN</button>
+        <a href="./register.html" class="">Register here</a>
+        <button class="form-control" id="login-btn">LOGIN</button>
       </form>
     </div>
 
