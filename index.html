@@ -4,34 +4,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./helpers/components.css" />
     <link rel="stylesheet" href="styles.css" />
     <title>Login</title>
   </head>
   <body>
-    <div class="login-session">
+    <div class="container-fixed">
       <h1>Login</h1>
-      <form onsubmit="return false;" class="login-form">
+      <form id="login-form" class="account-form" onsubmit="return false;">
         <div class="form-group">
-          <select id="account-name" class="form-control" required>
-            <option value=" " text="Account Name">select username</option>
+          <select id="account-number" class="form-control" required>
+            <option value="">Select Username</option>
           </select>
         </div>
         <div class="form-group">
           <input
             type="password"
             class="form-control"
-            placeholder="Pin"
             id="account-pin"
             maxlength="4"
             required
           />
         </div>
-        <a href="#">Forgot your password?</a>
-        <a href="./register.html" class="">Register here</a>
-        <button class="form-control" id="login-btn">LOGIN</button>
+        <button type="submit" class="btn btn-primary">Login</button>
       </form>
+
+      <p class="text-center">Don't have an account? <a href="./register.html">Register</a>.</p>
     </div>
 
+    <script src="./common.js"></script>
     <script src="./login.js"></script>
   </body>
 </html>

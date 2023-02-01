@@ -1,44 +1,43 @@
+if (isLoggedIn()) {
+  location.href = "transactions.html";
+}
+
+const loginForm = document.getElementById("login-form");
+const accountNumberElem = document.getElementById("account-number");
 const accountPinElem = document.getElementById("account-pin");
-const loginElem = document.getElementById("login-btn");
-const accountNameElem = document.getElementById("account-name");
-// if (localStorage.getItem("MB_LOGGEDIN_USER_ACCOUNT_NUMBER") !== null) {
-//   location.href = "transactions.html";
-// }
-let registeredUsers =
-  JSON.parse(localStorage.getItem("MB_USER_ACCOUNTS")) || [];
+
+// populate users in our database into the select field.
+// note that this is done for testing purposes only.
+const registeredUsers = getAllUsers();
 registeredUsers.forEach((user) => {
   const optionElem = document.createElement("option");
   optionElem.value = user.accountNumber;
-  optionElem.textContent = `${user.accountName}(${user.accountPin})`;
-  accountPinElem.textContent = `${user.accountPin}`;
-  accountNameElem.append(optionElem);
+  optionElem.textContent = `${user.accountName} (${user.accountPin})`;
+  accountNumberElem.append(optionElem);
 });
 
 // function for logging in
-function login() {
-  localStorage.setItem(
-    "MB_LOGGEDIN_USER_ACCOUNT_NUMBER",
-    accountNameElem.value
-  );
+const login = () => {
+  const accountNumber = accountNumberElem.value;
+  const existingUser = getUserByAccountNumber(accountNumber);
 
-  //to check user object with the stored account number
-  const accountUserDetails = registeredUsers.find(
-    (user) =>
-      user.accountNumber ===
-      localStorage.getItem("MB_LOGGEDIN_USER_ACCOUNT_NUMBER")
-  );
-  console.log(accountUserDetails);
-  if (accountUserDetails.accountPin !== accountPinElem.value) {
-    alert("incorrect pin");
-    return;
-  }
-
-  if (!accountUserDetails) {
+  if (!existingUser) {
     alert("Account not found");
     return;
   }
 
+  if (existingUser.accountPin !== accountPinElem.value) {
+    alert("Incorrect PIN");
+    return;
+  }
+
+  // all goes well, store user session and redirect to transactions page
+  localStorage.setItem(
+    "MB_LOGGEDIN_USER_ACCOUNT_NUMBER",
+    accountNumber
+  );
+
   location.href = "transactions.html";
 }
 
-loginElem.addEventListener("click", login);
+loginForm.addEventListener("submit", login);

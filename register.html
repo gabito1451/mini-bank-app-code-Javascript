@@ -9,17 +9,13 @@
     <title>Register</title>
   </head>
   <body>
-    <div class="container">
-      <form onsubmit="return false" action="#">
-        <h1>Register</h1>
-
-        <hr />
-
+    <div class="container-fixed">
+      <h1>Register</h1>
+      <form id="register-form" class="account-form" onsubmit="return false">
         <div class="form-group">
           <label class="form-control-label">Account Name</label>
           <input
             type="text"
-            placeholder="Enter name"
             id="account-name"
             class="form-control"
             required
@@ -30,21 +26,20 @@
           <label class="form-control-label">Account Number</label>
           <input
             type="text"
-            placeholder="Generate account no."
             maxlength="10"
             id="account-number"
             class="form-control"
             required
             readonly
           />
+          <button type="button" class="btn btn-info btn-sm"  id="regenerate-account-number-btn">Regenerate</button>
         </div>
 
         <div class="form-group">
           <label class="form-control-label">PIN</label>
           <input
             type="password"
-            placeholder="Enter Pin"
-            id="pin"
+            id="account-pin"
             required
             maxlength="4"
             class="form-control"
@@ -55,7 +50,7 @@
           <label class="form-control-label"><b>Repeat PIN</b></label>
           <input
             type="password"
-            placeholder="Repeat Pin"
+            placeholder="Re-enter PIN"
             id="pin-repeat"
             maxlength="4"
             class="form-control"
@@ -63,16 +58,13 @@
           />
         </div>
 
-        <hr />
-
-        <button type="submit" class="registerbtn" class="btn">Register</button>
+        <button type="submit" class="btn btn-primary">Register</button>
       </form>
+
+      <p class="text-center">Already have an account? <a href="./index.html">Sign in</a>.</p>
     </div>
 
-    <div class="container signin">
-      <p>Already have an account? <a href="./index.html">Sign in</a>.</p>
-    </div>
-
+    <script src="./common.js"></script>
     <script src="./register.js"></script>
   </body>
 </html>
