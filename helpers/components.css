@@ -3,6 +3,11 @@
   margin: 0;
   padding: 0;
 }
+body {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
 table,
 th,
 td {
@@ -10,6 +15,12 @@ td {
   border-collapse: collapse;
   padding: 10px;
 }
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
 h1 {
   text-align: center;
   text-transform: uppercase;
@@ -87,6 +98,7 @@ a.btn {
   color: #007bff;
   background-color: transparent;
 }
+
 .btn-sm {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
@@ -99,6 +111,7 @@ a.btn {
   line-height: 1.5;
   border-radius: 0.3rem;
 }
+
 .btn-block {
   width: 100%;
 }
@@ -144,4 +157,9 @@ textarea {
 }
 .min-w-150 {
   min-width: 150px;
+}
+
+/** Alignment */
+.text-center {
+  text-align: center;
 }

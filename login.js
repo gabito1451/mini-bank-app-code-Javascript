@@ -1,38 +1,43 @@
-const passwordElem = document.getElementById("selected-user-password");
-const loginElem = document.querySelector(".login-btn");
-const selectElem = document.getElementById("select");
-
-let registeredUsers = JSON.parse(localStorage.getItem("MB_USER_ACCOUNTS"));
-for (let i = 0; i < registeredUsers.length; i++) {
-  let optionElem = document.createElement("option");
-  let text = document.createTextNode(registeredUsers[i].accountName);
-  optionElem.appendChild(text);
-  optionElem.setAttribute("value", registeredUsers[i].accountName);
-  selectElem.insertBefore(optionElem, selectElem.lastChild);
+if (isLoggedIn()) {
+  location.href = "transactions.html";
 }
 
-// function for storing account number of the user in the local storage against key MB_LOGGEDIN_USER_ACCOUNTNUMBER
-function storeAcctNo() {
-  registeredUsers.forEach((user) => {
-    if (
-      selectElem.value === user.accountName &&
-      passwordElem.value === user.accountPin
-    ) {
-      localStorage.setItem(
-        "MB_LOGGEDIN_USER_ACCOUNTS",
-        JSON.stringify(user.accountNumber)
-      );
-    }
-    if (
-      registeredUsers.includes(
-        JSON.parse(localStorage.getItem("MB_LOGGEDIN_USER_ACCOUNTS"))
-      )
-    ) {
-      alert("please register with a different account number");
-    } else {
-      prompt("go to the transaction page");
-    }
-  });
+const loginForm = document.getElementById("login-form");
+const accountNumberElem = document.getElementById("account-number");
+const accountPinElem = document.getElementById("account-pin");
+
+// populate users in our database into the select field.
+// note that this is done for testing purposes only.
+const registeredUsers = getAllUsers();
+registeredUsers.forEach((user) => {
+  const optionElem = document.createElement("option");
+  optionElem.value = user.accountNumber;
+  optionElem.textContent = `${user.accountName} (${user.accountPin})`;
+  accountNumberElem.append(optionElem);
+});
+
+// function for logging in
+const login = () => {
+  const accountNumber = accountNumberElem.value;
+  const existingUser = getUserByAccountNumber(accountNumber);
+
+  if (!existingUser) {
+    alert("Account not found");
+    return;
+  }
+
+  if (existingUser.accountPin !== accountPinElem.value) {
+    alert("Incorrect PIN");
+    return;
+  }
+
+  // all goes well, store user session and redirect to transactions page
+  localStorage.setItem(
+    "MB_LOGGEDIN_USER_ACCOUNT_NUMBER",
+    accountNumber
+  );
+
+  location.href = "transactions.html";
 }
 
-loginElem.addEventListener("click", storeAcctNo);
+loginForm.addEventListener("submit", login);
