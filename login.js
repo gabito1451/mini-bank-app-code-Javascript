@@ -32,12 +32,9 @@ const login = () => {
   }
 
   // all goes well, store user session and redirect to transactions page
-  localStorage.setItem(
-    "MB_LOGGEDIN_USER_ACCOUNT_NUMBER",
-    accountNumber
-  );
+  localStorage.setItem("MB_LOGGEDIN_USER_ACCOUNT_NUMBER", accountNumber);
 
   location.href = "transactions.html";
-}
+};
 
 loginForm.addEventListener("submit", login);

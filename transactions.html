@@ -1,1 +1,54 @@
-<h1>I don't do much...yet</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./helpers/components.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Transactions page</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#">Transactions</a></li>
+        <li><a href="Deposit.html">Deposit</a></li>
+        <li><a href="Transfer.html">Transfer</a></li>
+        <li><a href="Withdraw.html">Withdraw</a></li>
+        <li><a href="AccountProfile.html">Account Profile</a></li>
+      </ul>
+    </nav>
+    <div class="container-fixed">
+      <h1>Transactions history</h1>
+      <div class="account-balance">
+        <p id="user-account-number"></p>
+        <p id="user-account-balance">#</p>
+      </div>
+      <button class="btn-danger" id="clear-history-btn">
+        Clear transaction history
+      </button>
+      <table>
+        <tr>
+          <th>Timestamp</th>
+          <th>TranxRef</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Balance before</th>
+          <th>Balance after</th>
+          <th>Beneficiary account Number</th>
+        </tr>
+        <tr class="transaction-data-info">
+          <td class="transaction-data"></td>
+          <td class="transaction-data"></td>
+          <td class="transaction-data"></td>
+          <td class="transaction-data"></td>
+          <td class="transaction-data"></td>
+          <td class="transaction-data"></td>
+          <td class="transaction-data"></td>
+        </tr>
+      </table>
+    </div>
+    <script src="./common.js"></script>
+    <script src="./transactions.js"></script>
+  </body>
+</html>
