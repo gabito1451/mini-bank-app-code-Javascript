@@ -1,26 +1,35 @@
 if (!isLoggedIn()) {
   location.href = "index.html";
 }
-console.log("You can see this if only you're logged in!");
 
-const userAccountNumberElement = document.getElementById("user-account-number");
+const clearHistoryButtonElem = document.getElementById("clear-history-btn");
 
-const userAccountBalanceElement = document.getElementById(
-  "user-account-balance"
+const transactionTableDataElem = document.getElementById(
+  "transactions-table-body"
 );
-const buttonElem = document.getElementById("clear-history-btn");
 
-const tableDataElem = document.querySelectorAll(".transaction-data");
+const storedTransactionsInfo = JSON.parse(
+  localStorage.getItem("userTransactionArr")
+);
 
-const accountNumber = localStorage.getItem("MB_LOGGEDIN_USER_ACCOUNT_NUMBER");
-
-userAccountNumberElement.textContent = `Account: ${accountNumber}`;
-userAccountBalanceElement.textContent = `#Balance`;
-
-function deleteTransactionHistory() {
-  tableDataElem.forEach((tableData) => {
-    tableData.remove(tableDataElem);
+const addRows = () => {
+  storedTransactionsInfo.forEach((transaction) => {
+    transactionTableDataElem.innerHTML += `<tr class="transaction-row"><td class="transaction-data">${transaction.timestamp}</td>
+  <td class="transaction-data">${transaction.transactionReference}</td>
+  <td class="transaction-data">${transaction.type}</td>
+  <td class="transaction-data">${transaction.amount}</td>
+  <td class="transaction-data">${transaction.balanceBefor}</td>
+  <td class="transaction-data">${transaction.balanceAfter}</td>
+  <td class="transaction-data">${transaction.beneficiaryAccountNumber}</td>
+  </tr>
+  `;
   });
-}
+};
+addRows();
 
-buttonElem.addEventListener("click", deleteTransactionHistory);
+const clearTransactionHistory = () => {
+  console.log(localStorage.removeItem("userTransactionArr"));
+  location.reload();
+};
+
+clearHistoryButtonElem.addEventListener("click", clearTransactionHistory);

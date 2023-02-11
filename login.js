@@ -20,6 +20,7 @@ registeredUsers.forEach((user) => {
 const login = () => {
   const accountNumber = accountNumberElem.value;
   const existingUser = getUserByAccountNumber(accountNumber);
+  console.log(existingUser);
 
   if (!existingUser) {
     alert("Account not found");

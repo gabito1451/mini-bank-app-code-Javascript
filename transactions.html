@@ -12,43 +12,37 @@
     <nav>
       <ul>
         <li><a href="#">Transactions</a></li>
-        <li><a href="Deposit.html">Deposit</a></li>
-        <li><a href="Transfer.html">Transfer</a></li>
-        <li><a href="Withdraw.html">Withdraw</a></li>
-        <li><a href="AccountProfile.html">Account Profile</a></li>
+        <li><a href="./deposit-page.html">Deposit</a></li>
+        <li><a href="./transfer.html">Transfer</a></li>
+        <li><a href="./withdraw.html">Withdraw</a></li>
+        <li><a href="./profile.html">Account Profile</a></li>
       </ul>
     </nav>
     <div class="container-fixed">
-      <h1>Transactions history</h1>
+      <h1>Transactions History</h1>
       <div class="account-balance">
-        <p id="user-account-number"></p>
-        <p id="user-account-balance">#</p>
+        <p>&#8358;:<span id="user-account-balance"></span></p>
       </div>
       <button class="btn-danger" id="clear-history-btn">
         Clear transaction history
       </button>
       <table>
-        <tr>
-          <th>Timestamp</th>
-          <th>TranxRef</th>
-          <th>Type</th>
-          <th>Amount</th>
-          <th>Balance before</th>
-          <th>Balance after</th>
-          <th>Beneficiary account Number</th>
-        </tr>
-        <tr class="transaction-data-info">
-          <td class="transaction-data"></td>
-          <td class="transaction-data"></td>
-          <td class="transaction-data"></td>
-          <td class="transaction-data"></td>
-          <td class="transaction-data"></td>
-          <td class="transaction-data"></td>
-          <td class="transaction-data"></td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Transaction Reference</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Balance Before</th>
+            <th>Balance After</th>
+            <th>Beneficiary Account Number</th>
+          </tr>
+        </thead>
+        <tbody id="transactions-table-body"></tbody>
       </table>
     </div>
     <script src="./common.js"></script>
+    <script src="./common-session.js"></script>
     <script src="./transactions.js"></script>
   </body>
 </html>
