@@ -14,3 +14,13 @@ const getUserByAccountNumber = (accountNumber) => {
   const user = usersArr.find((user) => user.accountNumber === accountNumber);
   return user;
 };
+
+const getUserIndexByAccountNumber = (accountNumber) => {
+  const usersArr = getAllUsers();
+  const userIndex = usersArr.findIndex(user => user.accountNumber === accountNumber);
+  return userIndex;
+}
+
+const setLocalStorageArrData = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value));
+}

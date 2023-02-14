@@ -1,35 +1,48 @@
-if (!isLoggedIn()) {
-  location.href = "index.html";
-}
-
 const clearHistoryButtonElem = document.getElementById("clear-history-btn");
-
-const transactionTableDataElem = document.getElementById(
+const transactionsTableBody = document.getElementById(
   "transactions-table-body"
 );
 
-const storedTransactionsInfo = JSON.parse(
-  localStorage.getItem("userTransactionArr")
-);
+const renderTransactionRow = (transaction) => {
+  if (!transaction) {
+    return;
+  }
 
-const addRows = () => {
-  storedTransactionsInfo.forEach((transaction) => {
-    transactionTableDataElem.innerHTML += `<tr class="transaction-row"><td class="transaction-data">${transaction.timestamp}</td>
-  <td class="transaction-data">${transaction.transactionReference}</td>
-  <td class="transaction-data">${transaction.type}</td>
-  <td class="transaction-data">${transaction.amount}</td>
-  <td class="transaction-data">${transaction.balanceBefor}</td>
-  <td class="transaction-data">${transaction.balanceAfter}</td>
-  <td class="transaction-data">${transaction.beneficiaryAccountNumber}</td>
-  </tr>
-  `;
-  });
+  // row
+  const transactionRow = document.createElement('tr');
+  transactionRow.setAttribute('class', 'transaction-row');
+
+  //cell
+  const rowDataKeys = ['timestamp', 'transactionReference', 'type', 'amount', 'balanceBefore', 'balanceAfter', 'beneficiaryAccountNumber'];
+
+  for (const rowDataKey of rowDataKeys) {
+    const transactionRowData = document.createElement('td');
+    transactionRowData.setAttribute('class', 'transaction-data');
+    transactionRowData.textContent = transaction[rowDataKey];
+    //append cell to the transaction row
+    transactionRow.append(transactionRowData);
+  }
+
+  transactionsTableBody.prepend(transactionRow);
 };
-addRows();
+
+const renderUserTransactions = () => {
+  const currentUser = getUserByAccountNumber(currentUserAccountNumber);
+  const userTransactions = currentUser.transactions;
+  userTransactions.forEach(transaction => {
+    renderTransactionRow(transaction)
+  });
+}
+
+renderUserTransactions();
 
 const clearTransactionHistory = () => {
-  console.log(localStorage.removeItem("userTransactionArr"));
-  location.reload();
+  const allUsers = getAllUsers();
+  const currentUserIndex = getUserIndexByAccountNumber(currentUserAccountNumber);
+  allUsers[currentUserIndex].transactions = [];
+
+  setLocalStorageArrData('MB_USER_ACCOUNTS', allUsers);
+  transactionsTableBody.innerHTML = "";
 };
 
 clearHistoryButtonElem.addEventListener("click", clearTransactionHistory);

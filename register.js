@@ -41,7 +41,7 @@ const register = () => {
 
   // add the user to our database
   registeredUsers.push(newUserObject);
-  localStorage.setItem("MB_USER_ACCOUNTS", JSON.stringify(registeredUsers));
+  setLocalStorageArrData('MB_USER_ACCOUNTS', registeredUsers);
 
   // navigate to login page
   location.href = "/";
