@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./helpers/components.css" />
     <link rel="stylesheet" href="styles.css" />
-    <title>Transactions page</title>
+    <title>Deposit</title>
     <script src="./tailwind.js"></script>
   </head>
   <body>
@@ -25,28 +25,34 @@
       <p>Balance: &#8358;<span id="user-account-balance"></span></p>
     </div>
 
-    <div class="container-fixed">
-      <h1>Transactions History</h1>
-      <button class="btn-danger" id="clear-history-btn">
-        Clear transaction history
+    <h1>Make deposits</h1>
+    <form id="deposit-form" class="container-fixed" onsubmit="return false">
+      <div class="form-group">
+        <label class="form-control-label"> Amount</label>
+        <input
+          type="number"
+          id="deposit-amount"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label class="form-control-label">PIN</label>
+        <input
+          type="password"
+          id="account-pin"
+          maxlength="4"
+          class="form-control"
+          required
+        />
+      </div>
+      <button type="submit" class="bg-gray-800 text-white p-2 rounded-md">
+        Deposit
       </button>
-      <table>
-        <thead>
-          <tr>
-            <th>Timestamp</th>
-            <th>Transaction Reference</th>
-            <th>Type</th>
-            <th>Amount</th>
-            <th>Balance Before</th>
-            <th>Balance After</th>
-            <th>Beneficiary Account Number</th>
-          </tr>
-        </thead>
-        <tbody id="transactions-table-body"></tbody>
-      </table>
-    </div>
+    </form>
+
     <script src="./common.js"></script>
     <script src="./common-session.js"></script>
-    <script src="./transactions.js"></script>
+    <script src="./deposit.js"></script>
   </body>
 </html>
