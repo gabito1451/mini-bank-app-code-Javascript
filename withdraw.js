@@ -17,7 +17,7 @@ const withdraw = () => {
     alert("Insufficient Balance");
     return;
   }
-  if (withdrawalAmountElem.value < 0) {
+  if (withdrawalAmountElem.value < 1) {
     alert("Enter a valid amount");
     return;
   }
