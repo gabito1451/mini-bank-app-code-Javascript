@@ -6,31 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./helpers/components.css" />
     <link rel="stylesheet" href="styles.css" />
-    <title>Deposit</title>
+    <title>Withdrawal page</title>
     <script src="./tailwind.js"></script>
   </head>
   <body>
     <nav class="bg-gray-800 text-white p-6">
       <ul class="flex justify-between items-center">
         <li><a href="./transactions.html">Transactions</a></li>
-        <li><a href="#">Deposit</a></li>
-        <li><a href="./withdraw.html">Withdraw</a></li>
+        <li><a href="./deposit.html">Deposit</a></li>
+        <li><a href="#">Withdraw</a></li>
         <li><a href="./transfer.html">Transfer</a></li>
         <li><a href="./profile.html">Account Profile</a></li>
         <li><a id="logout-btn" href="#">Logout</a></li>
       </ul>
     </nav>
-    <div class="account-balance">
-      <p>Balance: &#8358;<span id="user-account-balance"></span></p>
-    </div>
-
-    <h1>Make deposits</h1>
-    <form id="deposit-form" class="container-fixed" onsubmit="return false">
+    <form id="withdrawal-form" class="container-fixed" onsubmit="return false">
       <div class="form-group">
-        <label class="form-control-label"> Amount</label>
+        <label class="form-control-label">Withrawal Amount</label>
         <input
           type="number"
-          id="deposit-amount"
+          id="withdrawal-amount"
           class="form-control"
           required
         />
@@ -46,12 +41,11 @@
         />
       </div>
       <button type="submit" class="bg-gray-800 text-white p-2 rounded-md">
-        Deposit
+        Withdraw
       </button>
     </form>
-
     <script src="./common.js"></script>
     <script src="./common-session.js"></script>
-    <script src="./deposit.js"></script>
+    <script src="./withdraw.js"></script>
   </body>
 </html>

@@ -17,10 +17,12 @@ const getUserByAccountNumber = (accountNumber) => {
 
 const getUserIndexByAccountNumber = (accountNumber) => {
   const usersArr = getAllUsers();
-  const userIndex = usersArr.findIndex(user => user.accountNumber === accountNumber);
+  const userIndex = usersArr.findIndex(
+    (user) => user.accountNumber === accountNumber
+  );
   return userIndex;
-}
+};
 
 const setLocalStorageArrData = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
-}
+};

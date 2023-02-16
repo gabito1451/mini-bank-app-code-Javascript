@@ -14,7 +14,7 @@ const deposit = () => {
 
   // get the previous transaction before this one
   const currentBalance = getUserCurrentBalance();
-  
+
   const transactionDetails = {
     timestamp: new Date(),
     transactionReference: `TR${Date.now()}`,
@@ -25,10 +25,12 @@ const deposit = () => {
   };
 
   // pushing the depositTransactionDetails in to the transaction array
-  const currentUserIndex = getUserIndexByAccountNumber(currentUserAccountNumber);
+  const currentUserIndex = getUserIndexByAccountNumber(
+    currentUserAccountNumber
+  );
   allUsers[currentUserIndex].transactions.push(transactionDetails);
 
-  setLocalStorageArrData('MB_USER_ACCOUNTS', allUsers);
+  setLocalStorageArrData("MB_USER_ACCOUNTS", allUsers);
 
   // on deposit, move to transaction page
   location.href = "transactions.html";
