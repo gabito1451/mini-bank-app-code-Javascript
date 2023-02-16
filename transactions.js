@@ -20,7 +20,7 @@ const renderTransactionRow = (transaction) => {
     "amount",
     "balanceBefore",
     "balanceAfter",
-    "beneficiaryAccountNumber",
+    "beneficiary",
   ];
 
   for (const rowDataKey of rowDataKeys) {

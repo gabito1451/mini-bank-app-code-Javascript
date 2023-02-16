@@ -20,9 +20,12 @@
         <li><a id="logout-btn" href="#">Logout</a></li>
       </ul>
     </nav>
+    <div class="account-balance">
+      <p>Balance: &#8358;<span id="user-account-balance"></span></p>
+    </div>
     <form id="transfer-form" class="container-fixed" onsubmit="return false">
       <div class="form-group">
-        <select id="beneficiary-account-number" class="form-control" required>
+        <select id="beneficiary-account-name" class="form-control" required>
           <option value="">Select Account</option>
         </select>
       </div>

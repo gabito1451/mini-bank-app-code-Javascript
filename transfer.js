@@ -1,6 +1,6 @@
 const transferForm = document.getElementById("transfer-form");
-const selectBeneficiaryAccountNumberElem = document.getElementById(
-  "beneficiary-account-number"
+const selectBeneficiaryAccountNameElem = document.getElementById(
+  "beneficiary-account-name"
 );
 const transferAmountElem = document.getElementById("transfer-amount");
 const accountPinElem = document.getElementById("account-pin");
@@ -11,9 +11,9 @@ allUsers
   .filter((user) => user.accountNumber !== currentUserAccountNumber)
   .forEach((user) => {
     const optionElem = document.createElement("option");
-    optionElem.value = user.accountNumber;
-    optionElem.textContent = `${user.accountNumber}`;
-    selectBeneficiaryAccountNumberElem.append(optionElem);
+    optionElem.value = user.accountName;
+    optionElem.textContent = `${user.accountName}`;
+    selectBeneficiaryAccountNameElem.append(optionElem);
   });
 
 const transfer = () => {
@@ -40,7 +40,7 @@ const transfer = () => {
     amount: parseInt(transferAmountElem.value),
     balanceBefore: currentBalance,
     balanceAfter: currentBalance - parseInt(transferAmountElem.value),
-    beneficiaryAccountNumber: selectBeneficiaryAccountNumberElem.value,
+    beneficiary: selectBeneficiaryAccountNameElem.value,
   };
 
   // pushing the depositTransactionDetails in to the transaction array
