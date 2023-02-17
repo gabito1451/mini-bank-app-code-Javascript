@@ -20,13 +20,20 @@ const renderTransactionRow = (transaction) => {
     "amount",
     "balanceBefore",
     "balanceAfter",
-    "beneficiary",
+    "beneficiaryAccountNumber",
   ];
 
   for (const rowDataKey of rowDataKeys) {
     const transactionRowData = document.createElement("td");
     transactionRowData.setAttribute("class", "transaction-data");
-    transactionRowData.textContent = transaction[rowDataKey];
+    // if transfer transaction, show beneficiary's name instead of account number
+    if (rowDataKey === 'beneficiaryAccountNumber' && transaction['beneficiaryAccountNumber']) {
+      const beneficiary = getUserByAccountNumber(transaction[rowDataKey]);
+      const beneficiaryName = beneficiary?.accountName;
+      transactionRowData.textContent = beneficiaryName || transaction[rowDataKey];
+    } else {
+      transactionRowData.textContent = transaction[rowDataKey];
+    }
     //append cell to the transaction row
     transactionRow.append(transactionRowData);
   }
