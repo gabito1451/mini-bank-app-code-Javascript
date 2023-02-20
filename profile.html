@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./helpers/components.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Profile</title>
+    <script src="./tailwind.js"></script>
+  </head>
+  <body>
+    <nav class="bg-gray-800 text-white p-6">
+      <ul class="flex justify-between items-center">
+        <li><a href="./transactions.html">Transactions</a></li>
+        <li><a href="./deposit.html">Deposit</a></li>
+        <li><a href="./withdraw.html">Withdraw</a></li>
+        <li><a href="./transfer.html">Transfer</a></li>
+        <li><a href="#">Account Profile</a></li>
+        <li><a id="logout-btn" href="#">Logout</a></li>
+      </ul>
+    </nav>
+    <div class="container-fixed">
+      <h1>Account Profile</h1>
+      <form id="profile-form" class="account-profile" onsubmit="return false">
+        <div class="form-group">
+          <label class="form-control-label">Account Name</label>
+          <input type="text" id="account-name" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label class="form-control-label">Account Number</label>
+          <input
+            type="number"
+            id="account-number"
+            class="form-control"
+            required
+            readonly
+          />
+        </div>
+        <label class="form-control-label">
+          <input
+            type="checkbox"
+            id="change-pin"
+            onclick="displayFormToUpdate()"
+          />
+          Change Pin</label
+        >
+        <div id="pin-update-section">
+          <div class="form-group">
+            <label class="form-control-label">Current PIN</label>
+            <input
+              type="password"
+              id="current-pin"
+              required
+              maxlength="4"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label">New PIN</label>
+            <input
+              type="password"
+              id="new-pin"
+              required
+              maxlength="4"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label">Confirm New PIN</label>
+            <input
+              type="password"
+              id="confirm-new-pin"
+              required
+              maxlength="4"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="bg-gray-800 text-white p-2 rounded-md" id="update-btn">
+            Update
+          </button>
+        </div>
+      </form>
+      <button id="close-btn" class="bg-red-800 text-white p-2 rounded-md">
+        Close
+      </button>
+    </div>
+  </body>
+  <script src="./common.js"></script>
+  <script src="./common-session.js"></script>
+  <script src="./profile.js"></script>
+</html>
