@@ -30,3 +30,6 @@ table {
 div#pin-update-section {
   display: none;
 }
+#confirm-close-btn-action {
+  display: none;
+}
