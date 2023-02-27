@@ -27,3 +27,9 @@ table {
   margin-left: 780px;
   margin-top: 10px;
 }
+div#pin-update-section {
+  display: none;
+}
+#confirm-close-btn-action {
+  display: none;
+}

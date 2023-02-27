@@ -27,10 +27,14 @@ const renderTransactionRow = (transaction) => {
     const transactionRowData = document.createElement("td");
     transactionRowData.setAttribute("class", "transaction-data");
     // if transfer transaction, show beneficiary's name instead of account number
-    if (rowDataKey === 'beneficiaryAccountNumber' && transaction['beneficiaryAccountNumber']) {
+    if (
+      rowDataKey === "beneficiaryAccountNumber" &&
+      transaction["beneficiaryAccountNumber"]
+    ) {
       const beneficiary = getUserByAccountNumber(transaction[rowDataKey]);
       const beneficiaryName = beneficiary?.accountName;
-      transactionRowData.textContent = beneficiaryName || transaction[rowDataKey];
+      transactionRowData.textContent =
+        beneficiaryName || transaction[rowDataKey];
     } else {
       transactionRowData.textContent = transaction[rowDataKey];
     }
