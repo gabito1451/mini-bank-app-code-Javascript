@@ -72,7 +72,7 @@ function updateForm() {
   }
 
   localStorage.setItem("MB_USER_ACCOUNTS", JSON.stringify(allUsers));
-  // location.href = "transactions.html";
+  location.href = "transactions.html";
 }
 updateBtnElem.addEventListener("click", () => updateForm());
 
